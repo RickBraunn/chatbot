@@ -1,13 +1,11 @@
-const puppeteer = require('puppeteer');
-
-async function startChatbot() {
-  const browser = await puppeteer.launch({
-    headless: "new",
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+const browser = await puppeteer.launch({
+    headless: "new",       // Required for servers
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage'  // Prevents memory issues
+    ]
   });
-  const page = await browser.newPage();
-  // ... rest of your code
-}
 
 // leitor de qr code
 const qrcode = require('qrcode-terminal');
@@ -184,5 +182,3 @@ client.on('message', async msg => {
 
 
 });
-
-startChatbot();
