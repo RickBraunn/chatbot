@@ -2,6 +2,7 @@ const puppeteer = require('puppeteer'); // <-- REQUIRED IMPORT
 
 async function startBot() {
   const browser = await puppeteer.launch({
+    executablePath: '/usr/bin/chromium-browser',
     headless: "new",
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
